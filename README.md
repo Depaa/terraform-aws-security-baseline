@@ -8,6 +8,14 @@
 terraform init
 ```
 
+or if you have the S3 bucket for the state:
+```
+terraform init -input=false 
+    -backend-config="bucket=[BUCKET_NAME]" 
+    -backend-config="key=[KEY_PREFIX].tfstate" 
+    -backend-config="region=[REGION]"
+```
+
 2. Planning what is going to happen:
 ```
 terraform plan -var-file=terraform.tfvars
@@ -27,7 +35,7 @@ Starting with the right tagging strategy in mind is perfect:
 * CostCenter
 * Owner
 * Department
-* Usage (Scheduled, Event-driven, API, etc)
+* Usage (scheduled, event-driven, api, etc)
 * Sensitive (yes, no)
 * Compliance
 * IaCTool

@@ -42,3 +42,16 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "email_address" {
+  type        = string
+  description = "Email address to send budget notifications to"
+}
+
+variable "budgets" {
+  description = "List of budget configurations"
+  type = list(object({
+    budget_amount = number
+  }))
+  default = []
+}
