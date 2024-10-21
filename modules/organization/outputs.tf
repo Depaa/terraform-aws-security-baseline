@@ -24,22 +24,38 @@ resource "aws_ssm_parameter" "organization_id" {
   name  = "/management/organization/id"
   type  = "String"
   value = aws_organizations_organization.this.id
+
+  tags_all = merge(local.tags, {
+    "Usage" = "management"
+  })
 }
 
 resource "aws_ssm_parameter" "organization_arn" {
   name  = "/management/organization/arn"
   type  = "String"
   value = aws_organizations_organization.this.arn
+
+  tags_all = merge(local.tags, {
+    "Usage" = "management"
+  })
 }
 
 resource "aws_ssm_parameter" "organization_root_id" {
   name  = "/management/organization/root/id"
   type  = "String"
   value = aws_organizations_organization.this.roots[0].id
+
+  tags_all = merge(local.tags, {
+    "Usage" = "management"
+  })
 }
 
 resource "aws_ssm_parameter" "organization_root_arn" {
   name  = "/management/organization/root/arn"
   type  = "String"
   value = aws_organizations_organization.this.roots[0].arn
+
+  tags_all = merge(local.tags, {
+    "Usage" = "management"
+  })
 }
