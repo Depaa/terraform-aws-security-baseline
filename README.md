@@ -35,7 +35,7 @@ Starting with the right tagging strategy in mind is perfect:
 * CostCenter
 * Owner
 * Department
-* Usage (scheduled, event-driven, api, etc)
+* Usage (management, scheduled, event-driven, api, etc)
 * Sensitive (yes, no)
 * Compliance
 * IaCTool
