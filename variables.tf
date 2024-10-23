@@ -1,17 +1,7 @@
-variable "environment" {
-  description = "The environment (e.g., prod, dev, staging)"
-  type        = string
-}
-
 variable "owner" {
   description = "The owner of the resources"
   type        = string
   default     = null
-}
-
-variable "project" {
-  description = "The name of the project"
-  type        = string
 }
 
 variable "main_region" {

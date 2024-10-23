@@ -1,9 +1,11 @@
 locals {
-  prefix = lower(var.owner != null && var.owner != "" ? "${var.environment}-${var.owner}-${var.project}" : "${var.environment}-${var.project}")
+  environment = "prod"
+  project     = "security-baseline"
+  prefix      = lower(var.owner != null && var.owner != "" ? "${local.environment}-${var.owner}-${local.project}" : "${local.environment}-${local.project}")
 
   required_tags = {
-    Environment = lower(var.environment)
-    Project     = lower(var.project)
+    Environment = "prod"
+    Project     = "security-baseline"
     Application = var.application != null ? lower(var.application) : null
     CostCenter  = var.costcenter != null ? lower(var.costcenter) : null
     Owner       = var.owner != null ? lower(var.owner) : null
