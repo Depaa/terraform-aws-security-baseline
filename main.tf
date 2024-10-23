@@ -23,7 +23,7 @@ module "sso_checker" {
 }
 
 module "sso_main_user" {
-  source = "./modules/sso_main_user"
+  source = "./modules/sso-main-user"
 
   prefix        = local.prefix
   email_address = var.email_address
@@ -31,4 +31,11 @@ module "sso_main_user" {
   given_name    = var.given_name
 
   depends_on = [module.sso_checker]
+}
+
+module "service_control_policies" {
+  source = "./modules/service-control-policies"
+
+  prefix     = local.prefix
+  depends_on = [module.sso_main_user]
 }
