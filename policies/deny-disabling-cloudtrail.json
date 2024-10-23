@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyDisablingCloudTrail",
+            "Effect": "Deny",
+            "Action": [
+                "cloudtrail:StopLogging",
+                "cloudtrail:DeleteTrail",
+                "cloudtrail:UpdateTrail"
+            ],
+            "Resource": "arn:aws:cloudtrail:*:*:trail/*-security-baseline-*",
+            "Condition": {
+                "ArnNotLike": {
+                    "aws:PrincipalARN": [
+                        "arn:aws:iam::*:role/BREAK_GLASS"
+                    ]
+                }
+            }
+        }
+    ]
+}

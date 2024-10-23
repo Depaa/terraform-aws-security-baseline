@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyMakingS3BucketPublic",
+            "Effect": "Deny",
+            "Action": [
+                "s3:PutBucketAcl",
+                "s3:PutBucketPolicy",
+                "s3:PutObjectAcl",
+                "s3:PutBucketPublicAccessBlock"
+            ],
+            "Resource": "arn:aws:s3:::*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:x-amz-acl": [
+                        "public-read",
+                        "public-read-write",
+                        "authenticated-read"
+                    ]
+                },
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        }
+    ]
+}

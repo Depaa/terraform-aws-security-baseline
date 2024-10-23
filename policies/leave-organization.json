@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": [
+                "organizations:LeaveOrganization",
+                "organizations:DeleteOrganization"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "ArnNotLike": {
+                    "aws:PrincipalARN": [
+                        "arn:aws:iam::*:role/BREAK_GLASS"
+                    ]
+                }
+            }
+        }
+    ]
+}
